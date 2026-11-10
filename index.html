@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f1">
+  <title>PlainPack — A clearer way to package installs</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="packager.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="PlainPack home"><span class="brand-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 20 7.5v9L12 21l-8-4.5v-9L12 3Z" stroke="currentColor" stroke-width="1.6"/><path d="m4.5 7.7 7.5 4.4 7.5-4.4M12 12.1V21M8 5.3l8 4.5" stroke="currentColor" stroke-width="1.6"/></svg></span><span>plainpack<span class="brand-dot">.</span></span></a>
+    <div class="top-right"><span class="status-dot"></span> WORKS LOCALLY <span class="top-separator"></span><span>WINDOWS INSTALLERS</span></div>
+  </header>
+  <main>
+    <div class="intro">
+      <div class="eyebrow"><span></span> SIMPLE BY DESIGN</div>
+      <h1>Know what you run.<br>Keep it <em>yours.</em></h1>
+      <p>A thoughtful home for your trusted Windows installers. A clear identity, a careful check, and a simple way forward.</p>
+    </div>
+    <div class="workspace">
+      <section class="builder" aria-labelledby="builder-title">
+        <div class="section-heading"><div><div class="section-kicker">YOUR WORKSPACE</div><h2 id="builder-title">Create your launcher</h2></div><span class="step-count">01 <span>/</span> 02</span></div>
+        <div class="divider"></div>
+        <div class="field-heading"><span class="number">01</span><div><h3>Choose your installer</h3><p>Select the file you want to prepare.</p></div></div>
+        <label class="dropzone" id="dropzone" for="installer-file">
+          <input type="file" id="installer-file" accept=".msi,.exe">
+          <span class="upload-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V4m0 0L8 8m4-4 4 4M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="drop-title" id="drop-title">Drop your installer here</span>
+          <span class="drop-caption" id="drop-caption">or <span>browse files</span> on your computer</span>
+          <span class="file-types">.MSI <i></i> .EXE</span>
+        </label>
+        <div id="file-info" class="file-info" hidden><div class="file-info-icon">✓</div><div class="file-info-text"><strong id="file-name"></strong><span id="file-meta"></span></div><button id="remove-file" class="remove-file" type="button" aria-label="Remove selected file">×</button></div>
+        <p id="file-error" class="error" role="alert" hidden></p>
+        <div id="integrity-card" class="integrity-card" hidden><div class="integrity-heading"><span class="integrity-mark">✳</span><div><strong>File fingerprint</strong><p id="hash-status" role="status">Calculating SHA-256…</p></div><span class="integrity-label">SHA-256</span></div><code id="file-hash"></code></div>
+        <div class="divider lower-divider"></div>
+        <div class="field-heading"><span class="number">02</span><div><h3>Installation options</h3><p>Choose how the installer should run.</p></div></div>
+        <div class="trust-note"><span>✳</span><p><strong>Made to be understood.</strong> The launcher checks this fingerprint and displays the Windows signature status and publisher before you choose to install.</p></div>
+        <div class="mode-card"><div class="mode-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5h14v14H5zM8 9h8M8 13h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Confirm before installing</strong><p>The launcher will ask before starting the installer.</p></div><span class="always-on">ALWAYS ON</span></div>
+        <div class="option-row"><div><strong>Quiet installation</strong><p>Run with fewer installer prompts after confirmation.</p></div><label class="switch"><input type="checkbox" id="quiet"><span class="slider"></span><span class="sr-only">Quiet installation</span></label></div>
+        <div id="exe-options" class="exe-options" hidden><label for="exe-flag">Installer's quiet switch</label><input id="exe-flag" type="text" placeholder="e.g. /S or --silent" maxlength="50" autocomplete="off"><p>Use a switch documented by the installer’s publisher. Only one switch is supported.</p></div>
+        <p id="option-error" class="error" role="alert" hidden></p>
+        <button id="generate" class="primary-button" type="button" disabled><span>Create launcher</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <p class="under-button"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 10V7a5 5 0 0 1 10 0v3m-11 0h12v10H6V10Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> Your installer stays on your device. A log is saved beside it.</p>
+      </section>
+      <aside class="sidebar">
+        <div class="preview-card"><div class="preview-head"><div class="section-kicker">THE END RESULT</div><span class="preview-dots"><i></i><i></i><i></i></span></div><div class="preview-visual" aria-hidden="true"><span class="visual-caption">A NOTE ON TRUST <span>01 / 03</span></span><div class="passport-shadow"></div><div class="passport-paper"><div class="passport-top"><span>PLAINPACK</span><span>✳</span></div><div class="passport-title">A little<br>more <em>care.</em></div><div class="passport-rule"></div><div class="passport-bottom"><span>THE INSTALLER<br>FIELD NOTES</span><span>NO. 001</span></div></div><div class="passport-stamp"><span>CHECK</span><strong>✳</strong><span>THEN CHOOSE</span></div><span class="passport-spark">✳</span></div><h3>Trust the details.<br>Then take the next step.</h3><p>Your launcher checks the file, shows its publisher, and leaves the final decision to you.</p><div class="preview-tag"><span></span> BUILT FOR WINDOWS</div></div>
+        <div class="how-card"><div class="how-title">How it works <span>↗</span></div><div class="how-item"><span>1</span><p>Choose your trusted installer and options.</p></div><div class="how-item"><span>2</span><p>Download the generated <strong>.js</strong> launcher.</p></div><div class="how-item"><span>3</span><p>Keep both files together. On Windows, review the checks and confirm before installing.</p></div></div>
+        <div id="result" class="result-card" role="status" hidden><strong>Your launcher is ready.</strong><p>Keep it in the same folder as <span id="result-file"></span>. Opening it requires Windows Script Host and Windows PowerShell. A log is saved beside the installer.</p></div>
+      </aside>
+    </div>
+    <footer><span>A LITTLE MORE INTENTION, EVERY INSTALL</span><span>Thoughtful tools, simply made. <span class="footer-star">✳</span></span></footer>
+  </main>
+</body>
+</html>
